@@ -1,23 +1,21 @@
 import streamlit as st
 # To make things easier later, we're also importing numpy and pandas for
 # working with sample data.
-import numpy as np
 import pandas as pd
+import numpy as np
 
+#Intestazione Pagina
+st.title('Predict Dashboard')
 
-st.title('My first app')
+st.write('Previsione dei trend')
 
-st.write("Here's our first attempt at using data to create a table:")
-st.write(pd.DataFrame({
-    'first column': [1, 2, 3, 4],
-    'second column': [10, 20, 30, 40]
-}))
+df = pd.read_csv('output_data/09_zz_finish.csv', sep='\t')
 
-df = pd.DataFrame({
-  'first column': [1, 2, 3, 4],
-  'second column': [10, 20, 30, 40]
-})
+df = df.replace(np.nan, 'Unknown')
+df2 = df.append(df.sum(numeric_only=True), ignore_index=True)
+df2 = df2.tail(1)
+df2['Week'].fillna('Generale', inplace=True)
 
-df
+df2
 
 
