@@ -1,5 +1,9 @@
 # file data
-output_data/
+# output_data/
+output_data1/
+output_data2/
+output_data3/
+old/
 
 
 # Byte-compiled / optimized / DLL files
