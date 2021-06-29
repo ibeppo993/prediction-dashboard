@@ -3,7 +3,8 @@ pandas
 streamlit
 pytrends
 numpy
-python-scipy
+scipy==1.6.3
+
 
 ephem
 pystan==2.19.1.1
