@@ -2,9 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-from scipy.stats import linregress
+#from scipy.stats import linregress
 from datetime import datetime
-import base64
 
 
 def _max_width_():
