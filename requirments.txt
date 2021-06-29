@@ -1,0 +1,10 @@
+altair
+pandas
+streamlit
+pytrends
+numpy
+scipy
+
+ephem
+pystan==2.19.1.1
+prophet
