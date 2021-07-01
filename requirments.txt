@@ -4,7 +4,7 @@ streamlit
 pytrends
 numpy
 scipy==1.6.3
-pybase64
+base64
 ephem
 pystan==2.19.1.1
 prophet
