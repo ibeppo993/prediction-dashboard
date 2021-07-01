@@ -120,7 +120,7 @@ number_of_rows
 #df_complete
 st.dataframe(df_complete)
 
-def get_table_download_link(df):
+def get_table_download_link(df_complete):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
     in:  dataframe
     out: href string
