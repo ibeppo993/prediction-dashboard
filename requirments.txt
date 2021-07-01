@@ -5,6 +5,7 @@ pytrends
 numpy
 scipy==1.6.3
 
+base64
 
 ephem
 pystan==2.19.1.1
