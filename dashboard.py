@@ -4,7 +4,7 @@ import numpy as np
 import altair as alt
 #from scipy.stats import linregress
 from datetime import datetime
-import base64 as b64
+import pybase64
 
 
 def _max_width_():
@@ -127,7 +127,7 @@ def get_table_download_link(df):
     out: href string
     """
     csv = df_complete.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+    b64 = pybase64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
     href = f'<a href="data:file/csv;base64,{b64}">Download csv file</a>'
 
 st.markdown(get_table_download_link(df_complete), unsafe_allow_html=True)
