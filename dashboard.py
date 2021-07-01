@@ -121,15 +121,16 @@ number_of_rows
 #df_complete
 st.dataframe(df_complete)
 
-def get_table_download_link_csv(df_complete):
-    #csv = df.to_csv(index=False)
-    csv = df_complete.to_csv().encode()
-    #b64 = base64.b64encode(csv.encode()).decode() 
-    b64 = base64.b64encode(csv).decode()
-    href = f'<a href="data:file/csv;base64,{b64}" download="captura.csv" target="_blank">Download csv file</a>'
-    return href
+def get_table_download_link(df):
+    """Generates a link allowing the data in a given panda dataframe to be downloaded
+    in:  dataframe
+    out: href string
+    """
+    csv = df_complete.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+    href = f'<a href="data:file/csv;base64,{b64}">Download csv file</a>'
 
-st.markdown(get_table_download_link_csv(df_complete), unsafe_allow_html=True)
+st.markdown(get_table_download_link(df_complete), unsafe_allow_html=True)
 # add_selectbox = st.sidebar.selectbox(
 #     'Filtro per keyword',
 #     (list_keywords)
