@@ -4,6 +4,7 @@ import numpy as np
 import altair as alt
 #from scipy.stats import linregress
 from datetime import datetime
+import base64 as b64
 
 
 def _max_width_():
