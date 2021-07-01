@@ -4,6 +4,7 @@ import numpy as np
 import altair as alt
 #from scipy.stats import linregress
 from datetime import datetime
+from datetime import date
 import base64
 
 def _max_width_():
@@ -116,20 +117,23 @@ df_complete = pd.read_csv('output_data/14_for_streamlit.csv', sep='\t', decimal=
 #st.write('df_complete')
 index = df_complete.index
 number_of_rows = len(index)
-number_of_rows
+#number_of_rows
+st.write(f'Numero di Keywords individuate',number_of_rows)
 #df_complete
 st.dataframe(df_complete)
 
-def get_table_download_link(df_complete):
-    """Generates a link allowing the data in a given panda dataframe to be downloaded
-    in:  dataframe
-    out: href string
-    """
-    csv = df_complete.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}">Download csv file</a>'
+def get_table_download_link_csv(df_complete):
+    #csv = df.to_csv(index=False)
+    csv = df_complete.to_csv(sep=';', decimal=',', index=False).encode('UTF-8')
+    #b64 = base64.b64encode(csv.encode()).decode() 
+    b64 = base64.b64encode(csv).decode()
+    today = date.today()
+    d4 = today.strftime("%b-%d-%Y")
+    href = f'<a href="data:file/csv;base64,{b64}" download="WTF_keywords-{d4}.csv" target="_blank">Download file completo</a>'
+    return href
 
-st.markdown(get_table_download_link(df_complete), unsafe_allow_html=True)
+st.markdown(get_table_download_link_csv(df_complete), unsafe_allow_html=True)
+
 # add_selectbox = st.sidebar.selectbox(
 #     'Filtro per keyword',
 #     (list_keywords)
