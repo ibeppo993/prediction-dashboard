@@ -113,7 +113,7 @@ st.write('---------------------------------------------------')
 
 df_complete = pd.read_csv('output_data/14_for_streamlit.csv', sep='\t', decimal=',')
 
-st.write('df_complete')
+#st.write('df_complete')
 index = df_complete.index
 number_of_rows = len(index)
 number_of_rows
