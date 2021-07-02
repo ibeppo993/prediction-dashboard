@@ -129,6 +129,7 @@ number_of_rows = len(index)
 #number_of_rows
 st.write(f'Numero di Keywords individuate',number_of_rows)
 #df_complete
+df_complete.sort_values(by=['slope_trendline'])
 st.dataframe(df_complete)
 
 def get_table_download_link_csv(df_complete):
@@ -138,7 +139,7 @@ def get_table_download_link_csv(df_complete):
     b64 = base64.b64encode(csv).decode()
     today = date.today()
     d4 = today.strftime("%b-%d-%Y")
-    href = f'<a href="data:file/csv;base64,{b64}" download="WTF_keywords-{d4}.csv" target="_blank">Download file completo</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download="WTF_keywords-{d4}.csv" target="_blank">Download</a>'
     return href
 
 st.markdown(get_table_download_link_csv(df_complete), unsafe_allow_html=True)
