@@ -38,31 +38,33 @@ st.title('Predict Dashboard')
 
 #Grafico con Trend
 df_trend_g = pd.read_csv('output_data/09_zz_finish.csv', sep='\t')
-df_trend_g = df_trend_g.replace(np.nan, 'Unknown')
-df_trend_g = df_trend_g.append(df_trend_g.sum(numeric_only=True), ignore_index=True)
 df_trend_g
+df_trend_g = df_trend_g.replace(np.nan, 'Unknown')
+df_trend_g
+df_trend_g = df_trend_g.append(df_trend_g.sum(numeric_only=True), ignore_index=True)
+#df_trend_g
 df_trend_g = df_trend_g.tail(1)
 df_trend_g['Week'].fillna('Generale', inplace=True)
 df_trend_g = df_trend_g.drop(['Week'], axis=1)
-df_trend_g
+#df_trend_g
 
 df_trend_g.reset_index(drop=True, inplace=True)
 df_trend_g.insert(0, 'trend', 'trend')
-df_trend_g
+#df_trend_g
 df_trend_g.set_index('trend', inplace = True)
 df_trend_g.index.name = None
-df_trend_g
+#df_trend_g
 
 df_trend_g = df_trend_g.T
-df_trend_g
+#df_trend_g
 
 df_trend_g_chart = df_trend_g.copy()
 #st.write('Trend')
 
 df_trend_g_chart.reset_index(inplace=True)
-df_trend_g_chart
+#df_trend_g_chart
 df_trend_g_chart['index'] = df_trend_g_chart['index'].astype('datetime64[ns]')
-df_trend_g_chart
+#df_trend_g_chart
 chart_trend = alt.Chart(df_trend_g_chart).mark_line().encode(
     x=alt.X('index'),
     y=alt.Y('trend')
@@ -75,7 +77,9 @@ st.altair_chart(chart_trend, use_container_width=True)
 #
 #Grafico con Predict
 df_predict_g = pd.read_csv('output_data/11_zz_finish.csv', sep='\t', decimal=',')
+df_predict_g
 df_predict_g = df_predict_g.replace(np.nan, 'Unknown')
+df_predict_g
 df_predict_g = df_predict_g.append(df_predict_g.sum(numeric_only=True), ignore_index=True)
 df_predict_g = df_predict_g.tail(1)
 df_predict_g['Week'].fillna('Generale', inplace=True)
