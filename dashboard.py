@@ -120,6 +120,7 @@ df_trend_g_chart
 df_predict_g_chart
 
 full_df = pd.merge(df_predict_g_chart, df_trend_g_chart, left_on='index', right_on='index', how='left')
+full_df
 a = alt.Chart(full_df).mark_area(opacity=0.8, color='blue').encode(x='index', y='trend')
 b = alt.Chart(full_df).mark_area(opacity=0.6, color='orange').encode(x='index', y='predict')
 c = alt.layer(a, b).properties(title="Forecast and Trend Comparison")
