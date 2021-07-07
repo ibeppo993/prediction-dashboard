@@ -40,30 +40,35 @@ st.title('Predict Dashboard')
 df_trend_g = pd.read_csv('output_data/09_zz_finish.csv', sep='\t')
 df_trend_g = df_trend_g.replace(np.nan, 'Unknown')
 df_trend_g = df_trend_g.append(df_trend_g.sum(numeric_only=True), ignore_index=True)
+df_trend_g
 df_trend_g = df_trend_g.tail(1)
 df_trend_g['Week'].fillna('Generale', inplace=True)
 df_trend_g = df_trend_g.drop(['Week'], axis=1)
+df_trend_g
 
 df_trend_g.reset_index(drop=True, inplace=True)
 df_trend_g.insert(0, 'trend', 'trend')
+df_trend_g
 df_trend_g.set_index('trend', inplace = True)
 df_trend_g.index.name = None
+df_trend_g
 
 df_trend_g = df_trend_g.T
+df_trend_g
 
-#df_trend_g
 df_trend_g_chart = df_trend_g.copy()
 #st.write('Trend')
 
 df_trend_g_chart.reset_index(inplace=True)
+df_trend_g_chart
 df_trend_g_chart['index'] = df_trend_g_chart['index'].astype('datetime64[ns]')
-#df_trend_g_chart
+df_trend_g_chart
 chart_trend = alt.Chart(df_trend_g_chart).mark_line().encode(
     x=alt.X('index'),
     y=alt.Y('trend')
 ).properties(title="Trend Forecast")
 
-#st.altair_chart(chart_trend, use_container_width=True)
+st.altair_chart(chart_trend, use_container_width=True)
 #st.line_chart(df_trend_g)
 
 #
@@ -111,6 +116,8 @@ chart_prophet = alt.Chart(df_predict_g_chart).mark_line().encode(
 st.write('Comparazione')
 #st.line_chart(df_result_g)
 
+df_trend_g_chart
+df_predict_g_chart
 
 full_df = pd.merge(df_predict_g_chart, df_trend_g_chart, left_on='index', right_on='index', how='left')
 a = alt.Chart(full_df).mark_area(opacity=0.8, color='blue').encode(x='index', y='trend')
