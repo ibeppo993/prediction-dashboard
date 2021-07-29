@@ -120,8 +120,8 @@ chart_prophet = alt.Chart(df_predict_g_chart).mark_line().encode(
 st.write('Comparazione')
 #st.line_chart(df_result_g)
 
-df_trend_g_chart
-df_predict_g_chart
+print(df_trend_g_chart.info())
+print(df_predict_g_chart.info())
 
 full_df = pd.merge(df_predict_g_chart, df_trend_g_chart, left_on='index', right_on='index', how='left')
 full_df
